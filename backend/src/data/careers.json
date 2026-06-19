@@ -1,0 +1,58 @@
+[
+  {
+    "career": "Frontend Developer",
+    "requiredSkills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Redux",
+      "Git"
+    ]
+  },
+  {
+    "career": "Backend Developer",
+    "requiredSkills": [
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "REST API",
+      "JWT",
+      "Git"
+    ]
+  },
+  {
+    "career": "Full Stack Developer",
+    "requiredSkills": [
+      "HTML",
+      "CSS",
+      "JavaScript",
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "Git"
+    ]
+  },
+  {
+    "career": "Data Analyst",
+    "requiredSkills": [
+      "Python",
+      "Excel",
+      "SQL",
+      "Power BI",
+      "Statistics"
+    ]
+  },
+  {
+    "career": "Machine Learning Engineer",
+    "requiredSkills": [
+      "Python",
+      "NumPy",
+      "Pandas",
+      "Machine Learning",
+      "TensorFlow",
+      "SQL"
+    ]
+  }
+]
