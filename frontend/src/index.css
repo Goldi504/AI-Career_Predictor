@@ -1,0 +1,26 @@
+@import "tailwindcss";
+
+
+/* Dark Theme */
+
+.dark {
+  --bg: #020617;
+  --card: #0f172a;
+  --text: #ffffff;
+}
+
+/* Light Theme */
+
+.light {
+  --bg: #f8fafc;
+  --card: #ffffff;
+  --text: #0f172a;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+}

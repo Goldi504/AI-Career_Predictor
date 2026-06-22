@@ -36,7 +36,12 @@
 import dotenv from "dotenv";
 dotenv.config();
 
-console.log("ENV TEST:", process.env.GEMINI_API_KEY);
+// console.log("ENV TEST:", process.env.GEMINI_API_KEY);
+console.log("GROQ:", process.env.GROQ_API_KEY);
+
+
+console.log("JWT_ACCESS_SECRET:", process.env.JWT_ACCESS_SECRET);
+console.log("JWT_REFRESH_SECRET:", process.env.JWT_REFRESH_SECRET);
 
 import app from "./src/app.js";
 import connectToDB from "./src/config/db.js";

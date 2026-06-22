@@ -8,6 +8,8 @@ import progressRoutes from "./progress.routes.js";
 import streakRoutes from "./streak.routes.js";
 import trendRoutes from "./trend.routes.js";
 import adminRoutes from "./admin.routes.js";
+import chatRoutes from "./chat.routes.js";
+
 
 
 const router = Router();
@@ -38,6 +40,8 @@ router.use("/trends", trendRoutes);
 
 //admin router
 router.use("/admin", adminRoutes);
+// router.use("/chat", require("./chat.routes"));
+router.use("/chat", chatRoutes);
 
 
 export default router;

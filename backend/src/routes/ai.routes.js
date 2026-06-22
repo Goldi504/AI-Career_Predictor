@@ -1,38 +1,103 @@
+// import { Router } from "express";
+
+// import {
+//     predictCareerController,
+//     getPredictionResult,
+//     getRoadmap,
+//     getSkillGap
+// } from "../controllers/ai.controller.js";
+
+// import { protect } from "../middlewares/auth.middleware.js";
+
+// const router = Router();
+
+// router.post(
+//     "/predict-career",
+//     protect,
+//     predictCareerController
+// );
+
+// router.get(
+//     "/result",
+//     protect,
+//     getPredictionResult
+// );
+
+// router.get(
+//     "/roadmap",
+//     protect,
+//     getRoadmap
+// );
+
+// router.get(
+//     "/skill-gap",
+//     protect,
+//     getSkillGap
+// );
+
+// router.post(
+//   "/analyze-profile",
+//   protect,
+//   analyzeProfile
+// );
+
+// export default router;
+
+
+
+
+
 import { Router } from "express";
 
 import {
-    predictCareerController,
-    getPredictionResult,
-    getRoadmap,
-    getSkillGap
+  analyzeProfile,
+  getPredictionResult,
+  getRoadmap,
+  getSkillGap
 } from "../controllers/ai.controller.js";
 
-import { protect } from "../middlewares/auth.middleware.js";
+import {
+  protect
+} from "../middlewares/auth.middleware.js";
 
 const router = Router();
 
+// ANALYZE PROFILE
+
 router.post(
-    "/predict-career",
-    protect,
-    predictCareerController
+  "/analyze-profile",
+  protect,
+  analyzeProfile
 );
 
-router.get(
-    "/result",
-    protect,
-    getPredictionResult
-);
+// AI RESULT
 
 router.get(
-    "/roadmap",
-    protect,
-    getRoadmap
+  "/result",
+  protect,
+  getPredictionResult
 );
 
+// ROADMAP
+
+// router.get(
+//   "/roadmap",
+//   protect,
+//   getRoadmap
+// );
+
 router.get(
-    "/skill-gap",
-    protect,
-    getSkillGap
+ "/roadmap",
+ protect,
+ getRoadmap
+);
+
+// SKILL GAP
+
+router.get(
+  "/skill-gap",
+  protect,
+  getSkillGap
 );
 
 export default router;

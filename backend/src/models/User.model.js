@@ -3,295 +3,387 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 const userSchema = new mongoose.Schema(
 
-{
-   // BASIC INFORMATION
+   {
+      // BASIC INFORMATION
 
-   fullName: {
-      type: String,
-      required: true,
-      trim: true,
-      minlength: 3,
-      maxlength: 50
-   },
-    username: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true,
-      minlength: 3,
-      maxlength: 20
-   },
-    email: {
-      type: String,
-      required: true,
-      unique: true,
-      trim: true,
-      lowercase: true
-   },
+      fullName: {
+         type: String,
+         required: true,
+         trim: true,
+         minlength: 3,
+         maxlength: 50
+      },
+      username: {
+         type: String,
+         required: true,
+         unique: true,
+         trim: true,
+         lowercase: true,
+         minlength: 3,
+         maxlength: 20
+      },
+      email: {
+         type: String,
+         required: true,
+         unique: true,
+         trim: true,
+         lowercase: true
+      },
 
-   password: {
-      type: String,
-      required: true,
-      minlength: 6,
-      select: false
-   },
-   avatar: {
-      type: String,
-      default: ""
-   },
-    bio: {
-      type: String,
-      default: "",
-      maxlength: 300
-   },
-   // EDUCATION
-   education: {
-
-      degree: {
+      password: {
+         type: String,
+         required: true,
+         minlength: 6,
+         select: false
+      },
+      avatar: {
          type: String,
          default: ""
       },
-       college: {
+      bio: {
          type: String,
-         default: ""
+         default: "",
+         maxlength: 300
       },
-      graduationYear: {
-         type: Number
-      }
-   },
-   // EXPERIENCE
-    experienceLevel: {
-      type: String,
+      // EDUCATION
+      education: {
 
-      enum: [
-         "Beginner",
-         "Intermediate",
-         "Advanced"
-      ],
-      default: "Beginner"
-    },
-     yearsOfExperience: {
-      type: Number,
-      default: 0
-   },
- // SKILLS
- skills: [
-      {
-         type: String,
-         trim: true
-      }
-   ],
-
-   interests: [
-      {
-         type: String,
-         trim: true
-      }
-   ],
-   certifications: [
-      {
-         title: String,
-         issuer: String,
-         issueDate: Date
-      }
-   ],
- // RESUME
-  resume: {
-
-      resumeUrl: {
-         type: String,
-         default: ""
-      },
-
-      extractedSkills: [
-         {
-            type: String
+         degree: {
+            type: String,
+            default: ""
+         },
+         college: {
+            type: String,
+            default: ""
+         },
+         graduationYear: {
+            type: Number
          }
-      ],
+      },
+      // EXPERIENCE
+      // experienceLevel: {
+      //    type: String,
 
-      uploadedAt: {
-         type: Date
-      }
-   },
-    // AI ANALYTICS
-    aiProfile: {
+      //    enum: [
+      //       "Beginner",
+      //       "Intermediate",
+      //       "Advanced"
+      //    ],
+      //    default: "Beginner"
+      // },
+      // yearsOfExperience: {
+      //    type: Number,
+      //    default: 0
+      // },
 
-      predictedCareer: {
+      experienceLevel: {
          type: String,
-         default: ""
+         enum: [
+            "Beginner",
+            "Intermediate",
+            "Advanced"
+         ],
+         default: "Beginner"
       },
 
-      careerMatchScore: {
+      yearsOfExperience: {
          type: Number,
          default: 0
       },
-      missingSkills: [
+
+       // SKILLS
+      skills: [
          {
-            type: String
+            type: String,
+            trim: true
          }
       ],
-      recommendedRoadmap: [
+
+      interests: [
          {
-            week: String,
-            topic: String
+            type: String,
+            trim: true
          }
-      ]
-   },
-   // AUTHENTICATION
-    refreshToken: {
-      type: String,
-      default: ""
-   },
-emailVerificationToken: {
+      ],
+      certifications: [
+         {
+            title: String,
+            issuer: String,
+            issueDate: Date
+         }
+      ],
+
+      // TARGET PROFESSION
+
+      profession: {
+         type: String,
+         trim: true,
+         default: ""
+      },
+      // RESUME
+      resume: {
+
+         resumeUrl: {
+            type: String,
+            default: ""
+         },
+
+         extractedSkills: [
+            {
+               type: String
+            }
+         ],
+
+         uploadedAt: {
+            type: Date
+         }
+      },
+      // AI ANALYTICS
+      //  aiProfile: {
+
+      //    predictedCareer: {
+      //       type: String,
+      //       default: ""
+      //    },
+
+      //    careerMatchScore: {
+      //       type: Number,
+      //       default: 0
+      //    },
+      //    missingSkills: [
+      //       {
+      //          type: String
+      //       }
+      //    ],
+      //    recommendedRoadmap: [
+      //       {
+      //          week: String,
+      //          topic: String
+      //       }
+      //    ]
+      // },
+
+      // AI ANALYTICS
+
+      aiProfile: {
+
+         predictedCareer: {
+            type: String,
+            default: ""
+         },
+
+         careerMatchScore: {
+            type: Number,
+            default: 0
+         },
+
+         missingSkills: [
+            {
+               type: String
+            }
+         ],
+
+         recommendedSkills: [
+            {
+               type: String
+            }
+         ],
+
+         recommendedRoadmap: [
+            {
+               // week: String,
+               // topic: String
+               skill: {
       type: String
-   },
-
-   isEmailVerified: {
-      type: Boolean,
-      default: false
-   },
-
-   passwordResetToken: {
-      type: String
-   },
-
-   passwordResetExpiry: {
-      type: Date
-   },
-   // ACCOUNT STATUS
-   role: {
-      type: String,
-      enum: ["user", "admin"],
-      default: "user"
-   },
-
-   isActive: {
-      type: Boolean,
-      default: true
-   },
-
-   lastLogin: {
-      type: Date
-   },
-    //dashboard model
-    roadmapProgress:{
-
-   completedTasks: {
-      type: Number,
-      default: 0
-   },
-
-   totalTasks: {
-      type: Number,
-      default: 0
-   }
-},
-// progress status
-skillProgress: [
-  {
-    skill: {
-      type: String,
-      required: true
     },
 
-    completed: {
-      type: Boolean,
-      default: false
-    },
+    topics: [
+      {
+        type: String
+      }
+    ]
+            }
+         ],
 
-    completedAt: {
-      type: Date
-    }
-  }
+         analyzedAt: {
+            type: Date
+         }
+      },
+      // AUTHENTICATION
+      refreshToken: {
+         type: String,
+         default: ""
+      },
+      emailVerificationToken: {
+         type: String
+      },
+
+      isEmailVerified: {
+         type: Boolean,
+         default: false
+      },
+
+      passwordResetToken: {
+         type: String
+      },
+
+      passwordResetExpiry: {
+         type: Date
+      },
+      // ACCOUNT STATUS
+      role: {
+         type: String,
+         enum: ["user", "admin"],
+         default: "user"
+      },
+
+      isActive: {
+         type: Boolean,
+         default: true
+      },
+
+      lastLogin: {
+         type: Date
+      },
+      //dashboard model
+      roadmapProgress: {
+
+         completedTasks: {
+            type: Number,
+            default: 0
+         },
+
+         totalTasks: {
+            type: Number,
+            default: 0
+         }
+      },
+      // progress status
+   //    skillProgress: [
+   //       {
+   //          // skill: {
+   //          //    type: String,
+   //          //    required: true
+   //          // },
+
+   //          // completed: {
+   //          //    type: Boolean,
+   //          //    default: false
+   //          // },
+
+   //          // completedAt: {
+   //          //    type: Date
+   //          // }
+
+   //           skill: String,
+   //  topic: String,
+   //  completed: {
+   //    type: Boolean,
+   //    default: false
+   //  },
+   //  completedAt: Date
+   //       }
+   //    ],
+      // streack progress
+
+
+      skillProgress:[
+ {
+   skill:String,
+
+   topic:String,
+
+   completed:Boolean,
+
+   completedAt:Date
+ }
 ],
-// streack progress
-streak: {
-  current: {
-    type: Number,
-    default: 0
-  },
+      streak: {
+         current: {
+            type: Number,
+            default: 0
+         },
 
-  longest: {
-    type: Number,
-    default: 0
-  },
+         longest: {
+            type: Number,
+            default: 0
+         },
 
-  lastActivity: {
-    type: Date
-  }
-},
+         lastActivity: {
+            type: Date
+         }
+      },
 
-},
-{
-    timestamps:true
-}
+   },
+   {
+      timestamps: true
+   }
 );
 
 // PASSWORD HASHING
 
-userSchema.pre("save", async function(next){
+userSchema.pre("save", async function (next) {
 
-   if(!this.isModified("password")){
+   if (!this.isModified("password")) {
 
-      return ;
+      return;
    }
 
    this.password = await bcrypt.hash(
       this.password,
       12
    );
-    
+
 });
 // PASSWORD COMPARISON
 userSchema.methods.comparePassword =
-async function(password){
+   async function (password) {
 
-   return await bcrypt.compare(
-      password,
-      this.password
-   );
-};
+      return await bcrypt.compare(
+         password,
+         this.password
+      );
+   };
 
 // ACCESS TOKEN
 userSchema.methods.generateAccessToken =
-function(){
+   function () {
 
-   return jwt.sign(
+      return jwt.sign(
 
-      {
-         id: this._id,
-         role: this.role
-      },
+         {
+            id: this._id,
+            role: this.role
+         },
 
-      process.env.JWT_ACCESS_SECRET,
+         process.env.JWT_ACCESS_SECRET,
 
-      {
-         expiresIn:
-            process.env.ACCESS_TOKEN_EXPIRY
-      }
-   );
-};
+         {
+            expiresIn:
+               process.env.ACCESS_TOKEN_EXPIRY
+         }
+      );
+   };
 // REFRESH TOKEN
 userSchema.methods.generateRefreshToken =
-function(){
+   function () {
 
-   return jwt.sign(
+      return jwt.sign(
 
-      {
-         id: this._id
-      },
+         {
+            id: this._id
+         },
 
-      process.env.JWT_REFRESH_SECRET,
+         process.env.JWT_REFRESH_SECRET,
 
-      {
-         expiresIn:
-            process.env.REFRESH_TOKEN_EXPIRY
-      }
-   );
-};
+         {
+            expiresIn:
+               process.env.REFRESH_TOKEN_EXPIRY
+         }
+      );
+   };
 // REMOVE SENSITIVE DATA
-userSchema.methods.toJSON = function(){
+userSchema.methods.toJSON = function () {
 
    const userObject = this.toObject();
 
