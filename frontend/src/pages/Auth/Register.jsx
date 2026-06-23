@@ -37,42 +37,7 @@ const Register = () => {
 
   }
 };
-  // const submitHandler = async (data) => {
-  //   try {
-  //     const res = await registerUser(data);
-
-  //     login(
-  //       res.data.accessToken,
-  //       res.data.user
-  //     );
-
-  //     toast.success(res.message);
-
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     toast.error(
-  //       error.response?.data?.message ||
-  //         "Registration Failed"
-  //     );
-  //   }
-  // };
-// const submitHandler = async (data) => {
-//   try {
-//     const res = await registerUser(data);
-
-//     console.log("REGISTER RESPONSE:", res);
-
-//     toast.success("Success");
-//   } catch (error) {
-//     console.log("REGISTER ERROR:", error);
-
-//     toast.error(
-//       error.response?.data?.message ||
-//       "Registration Failed"
-//     );
-//   }
-// };
-
+  
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 flex items-center justify-center p-4">
 

@@ -15,10 +15,6 @@ import Trends from "../pages/Trends/Trends";
 import Chat from "../pages/Chat";
 
 
-
-
-
-
 function AppRoutes() {
   return (
     <Routes>

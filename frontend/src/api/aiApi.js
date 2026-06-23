@@ -1,16 +1,5 @@
 import api from "./axios";
 
-// export const predictCareer =
-// async()=>{
-
-//     const response =
-//     await api.post(
-//         "/ai/predict-career"
-//     );
-
-//     return response.data;
-// };
-
 export const analyzeProfile =
   async () => {
     const res =
