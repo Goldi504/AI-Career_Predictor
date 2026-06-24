@@ -64,8 +64,8 @@ const app = express();
 app.use(
   cors({
     origin: [
-      "http://localhost:5173",
-      "https://ai-career-predictor-sigma.vercel.app",
+    
+      "https://ai-career-predictor-alpha.vercel.app",
     ],
     credentials: true,
   })
